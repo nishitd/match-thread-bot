@@ -44,7 +44,7 @@ usrwhitelist = ['spawnofyanni',
 				
 # allowed to post early threads in given subreddit
 timewhitelist = {'matchthreaddertest': ['spawnofyanni'],
-				 'ussoccer': ['redravens'], 'IndianMatchThreader': ['nishitd'], 'IndianFootball' : ['nishitd']}
+				 'ussoccer': ['redravens'], 'indianmatchthreader': ['nishitd'], 'indianfootball' : ['nishitd']}
 
 # markup constants
 goal=0;pgoal=1;ogoal=2;mpen=3;yel=4;syel=5;red=6;subst=7;subo=8;subi=9;strms=10;lines=11;evnts=12
