@@ -31,7 +31,7 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
 activeThreads = []
 notify = False
 messaging = True
-spriteSubs = ['soccer','Gunners','fcbayern','soccerdev','mls']
+spriteSubs = ['soccer','Gunners','fcbayern','soccerdev','mls','indianfootball']
 
 # naughty list				
 usrblacklist = ['dbawbaby',
@@ -40,11 +40,11 @@ usrblacklist = ['dbawbaby',
 				
 # allowed to make multiple threads
 usrwhitelist = ['spawnofyanni',
-				'Omar_Til_Death']
+				'Omar_Til_Death', 'nishitd']
 				
 # allowed to post early threads in given subreddit
 timewhitelist = {'matchthreaddertest': ['spawnofyanni'],
-				 'ussoccer': ['redravens']}
+				 'ussoccer': ['redravens'], 'IndianMatchThreader': ['nishitd'], 'IndianFootball' : ['nishitd']}
 
 # markup constants
 goal=0;pgoal=1;ogoal=2;mpen=3;yel=4;syel=5;red=6;subst=7;subo=8;subi=9;strms=10;lines=11;evnts=12
@@ -558,7 +558,7 @@ def createNewThread(team1,team2,reqr,sub):
 		# don't create a thread more than 5 minutes before kickoff
 		if sub.lower() not in timewhitelist or sub.lower() in timewhitelist and reqr.lower() not in timewhitelist[sub.lower()]:
 			hour_i, min_i, now = getTimes(ko_time)
-			now_f = now + datetime.timedelta(hours = 5, minutes = 5)
+			now_f = now + datetime.timedelta(hours = 0, minutes = 30)
 			if ko_day == '':
 				return 1,''
 			if now_f.day < int(ko_day):
@@ -742,7 +742,7 @@ def checkAndCreate():
 					if notify:
 						r.send_message(admin,"Match thread request fulfilled","/u/" + msg.author.name + " requested " + teams[0] + " vs " + teams[1] + " in /r/" + sub + ". \n\n[Thread link](http://www.reddit.com/r/" + sub + "/comments/" + thread_id + ") | [Deletion link](http://www.reddit.com/message/compose/?to=" + username + "&subject=delete&message=" + thread_id + ")")
 				if threadStatus == 1: # not found
-					msg.reply("Sorry, I couldn't find info for that match. If the match you requested appears on [this page](http://www.espnfc.us/scores), please let /u/spawnofyanni know about this error.\n\n-------------------------\n\n*Why not run your own match thread? [Look here](https://www.reddit.com/r/soccer/wiki/matchthreads) for templates, tips, and example match threads from the past if you're not sure how.*\n\n*You could also check out these match thread creation tools from /u/afito and /u/Mamu7490:*\n\n*[RES Templates](https://www.reddit.com/r/soccer/comments/3ndd7b/matchthreads_for_beginners_the_easy_way/)*\n\n*[MTmate](https://www.reddit.com/r/soccer/comments/3huyut/release_v09_of_mtmate_matchthread_generator/)*")
+					msg.reply("Sorry, I couldn't find info for that match. If the match you requested appears on [this page](http://www.espnfc.us/scores), please let /u/nishitd know about this error.\n\n-------------------------\n\n*Why not run your own match thread? [Look here](https://www.reddit.com/r/soccer/wiki/matchthreads) for templates, tips, and example match threads from the past if you're not sure how.*\n\n*You could also check out these match thread creation tools from /u/afito and /u/Mamu7490:*\n\n*[RES Templates](https://www.reddit.com/r/soccer/comments/3ndd7b/matchthreads_for_beginners_the_easy_way/)*\n\n*[MTmate](https://www.reddit.com/r/soccer/comments/3huyut/release_v09_of_mtmate_matchthread_generator/)*")
 				if threadStatus == 2: # before kickoff
 					msg.reply("Please wait until at least 5 minutes to kickoff to send me a thread request, just in case someone does end up making one themselves. Thanks!\n\n-------------------------\n\n*Why not run your own match thread? [Look here](https://www.reddit.com/r/soccer/wiki/matchthreads) for templates, tips, and example match threads from the past if you're not sure how.*\n\n*You could also check out these match thread creation tools from /u/afito and /u/Mamu7490:*\n\n*[RES Templates](https://www.reddit.com/r/soccer/comments/3ndd7b/matchthreads_for_beginners_the_easy_way/)*\n\n*[MTmate](https://www.reddit.com/r/soccer/comments/3huyut/release_v09_of_mtmate_matchthread_generator/)*")
 				if threadStatus == 3: # after full time - probably found the wrong match
