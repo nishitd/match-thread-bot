@@ -143,6 +143,7 @@ def getRelatedSubreddits():
 	subs.append(u'soccerdev')
 	subs.append(u'whufc')
 	subs.append(u'coyssandbox')
+        subs.append(u'indianmatchthreader')
 	subs = [x.lower() for x in subs]
 	return subs
 	
