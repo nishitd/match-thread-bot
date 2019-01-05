@@ -1,1 +1,1 @@
-admin||bot_username||bot_password||subreddit||user_agent_string||id||secret||redirect_url
+adminname||botname||botpassword||defaultsub||Bot Description by /u/whoever||oauth_ID||oauth_secret||http://oath_redirect_url
